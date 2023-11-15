@@ -30,8 +30,6 @@ Notifications:
 Users receive timely notifications about task updates and commitments.
 User Profiles:
 Users can create and customize profiles, setting preferences for a personalized experience.
-Accessibility Settings:
-Adjustable settings for font size, voice feedback, and other accessibility options.
 User Guidance:
 Onboarding guidance and tooltips for a user-friendly introduction to the app.
 Uber Integration:
@@ -51,7 +49,7 @@ API's
 ### APIs
 
 Uber API
-Speech-to-text api 
+google Speech-to-text api 
 
 ### Sitemap
 
@@ -76,6 +74,7 @@ Describe your data and the relationships between them. You can show this visuall
 /home
 /signup
 /login
+/help
 /user/:id
 /tasks
 /user/:id/tasks
