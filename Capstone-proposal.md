@@ -1,6 +1,6 @@
 # IseeYou
 
-## Overview
+## Overview hahahaha
 
 The "I See You" app is a unique platform dedicated to connecting family members with a visually impaired individual. This innovative tool empowers the visually impaired user to create and manage tasks or activities, seeking assistance from their family network. Family members can easily access the task list, allowing them to choose and commit to specific activities they can support. "I See You" promotes effective communication and collaboration, creating a supportive environment for visually impaired individuals within their familial community.
 
@@ -18,6 +18,7 @@ The app prioritizes accessibility, ensuring visually impaired users can navigate
 
 ### Features
 
+#### MVP
 Task Creation:
 Users can easily create tasks using voice commands, ensuring effortless input.
 Task Management:
@@ -26,14 +27,15 @@ Task Visibility:
 Family members can access a task list, viewing details and commitments for effective collaboration.
 Task Commitment:
 Family members can commit to specific tasks, promoting shared responsibility and support.
+
+#### Next Up
 Notifications:
 Users receive timely notifications about task updates and commitments.
 User Profiles:
 Users can create and customize profiles, setting preferences for a personalized experience.
 User Guidance:
 Onboarding guidance and tooltips for a user-friendly introduction to the app.
-Uber Integration:
-Link addresses to the Uber app, facilitating convenient transportation arrangements for tasks involving travel.
+
 Contact Information Linking:
 Link and manage contact information within the app, providing easy access to crucial contacts for enhanced communication and coordination.
 
@@ -97,3 +99,5 @@ Pharmacies linking:
 connection with pharmacies to order prespcription also to see if prescription are ready
 Doctor Appointments:
 Schedule and manage doctor appointments on behalf of the visually impaired individual, streamlining healthcare coordination.
+Uber Integration:
+Link addresses to the Uber app, facilitating convenient transportation arrangements for tasks involving travel.
