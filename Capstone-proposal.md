@@ -66,7 +66,11 @@ google Speech-to-text api
 ![logos](./src/assets/screenshots/Screenshot%202023-11-14%20at%202.55.33%20PM.png)
 ![logoIdea](./src/assets/screenshots/Screenshot%202023-11-14%20at%202.55.46%20PM.png)
 ![diagram](./src/assets/screenshots/Screenshot%202023-11-14%20at%2011.08.42%20PM.png)
-
+![SignUp](./src/assets/screenshots/Screenshot%202023-11-18%20at%203.48.22%20PM.png)
+![logo](./src/assets/screenshots/Screenshot%202023-11-18%20at%203.48.33%20PM.png)
+![home](./src/assets/screenshots/Screenshot%202023-11-18%20at%203.48.04%20PM.png)
+![newTask](./src/assets/screenshots/Screenshot%202023-11-18%20at%205.36.23%20PM.png)
+![taskPage](./src/assets/screenshots/Screenshot%202023-11-18%20at%206.04.29%20PM.png)
 ### Data
 
 Describe your data and the relationships between them. You can show this visually using diagrams, or write it out. 
