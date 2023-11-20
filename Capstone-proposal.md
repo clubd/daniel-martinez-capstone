@@ -18,18 +18,18 @@ The app prioritizes accessibility, ensuring visually impaired users can navigate
 
 ## Features
 
-#### MVP
+### MVP
 
-### Task Creation:
+#### Task Creation:
 Users can easily create tasks using voice commands, ensuring effortless input.
 
-### Task Management:
+#### Task Management:
 Efficiently manage tasks, marking them as completed or in progress for a clear overview.
 
-### Task Visibility:
+#### Task Visibility:
 Family members can access a task list, viewing details and commitments for effective collaboration.
 
-### Task Commitment:
+#### Task Commitment:
 Family members can commit to specific tasks, promoting shared responsibility and support.
 
 ## Next Up
@@ -58,7 +58,7 @@ Link and manage contact information within the app, providing easy access to cru
 #### google Speech-to-text api 
 #### calendar api 
 
-### Sitemap
+## Sitemap
 
 #### -home
 #### -signUp
