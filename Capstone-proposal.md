@@ -86,13 +86,13 @@ Describe your data and the relationships between them. You can show this visuall
 
 ### Endpoints
 
-## /home
-## /signup
-## /login
-## /help
-## /user/:id
-## /tasks
-## /user/:id/tasks
+# /home
+# /signup
+# /login
+# /help
+# /user/:id
+# /tasks
+# /user/:id/tasks
 
 
 
@@ -103,9 +103,9 @@ Include login or user profile functionality? user will be able to login to their
 
 ### Roadmap
 
-## Spring 1: database setup and back end fucntionality 
-## Spring 2 validation and user profile setup
-## Spring 3 front-end 
+# Spring 1: database setup and back end fucntionality 
+# Spring 2 validation and user profile setup
+# Spring 3 front-end 
 
 ### Nice-to-haves
 
