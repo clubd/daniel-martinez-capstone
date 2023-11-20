@@ -1,6 +1,6 @@
 # IseeYou
 
-## Overview hahahaha
+## Overview 
 
 The "I See You" app is a unique platform dedicated to connecting family members with a visually impaired individual. This innovative tool empowers the visually impaired user to create and manage tasks or activities, seeking assistance from their family network. Family members can easily access the task list, allowing them to choose and commit to specific activities they can support. "I See You" promotes effective communication and collaboration, creating a supportive environment for visually impaired individuals within their familial community.
 
@@ -12,53 +12,61 @@ The "I See You" app is a transformative solution for visually impaired individua
 
 The "I See You" app is designed for visually impaired individuals and their families. Visually impaired users will use the app to create tasks, leveraging the user-friendly interface and voice-to-text feature for easy task management. Family members, on the other hand, will access the app to view tasks, committing to activities they can assist with, fostering collaboration within the family.
 
-Special Considerations:
+## Special Considerations:
 
 The app prioritizes accessibility, ensuring visually impaired users can navigate seamlessly. The voice-to-text feature simplifies task creation, accommodating the specific needs of visually impaired individuals. With an intuitive design, the app caters to users with varying levels of technological proficiency, creating a user-friendly experience for all.
 
-### Features
+#### Features
 
-#### MVP
-Task Creation:
+### MVP
+
+## Task Creation:
 Users can easily create tasks using voice commands, ensuring effortless input.
-Task Management:
+
+## Task Management:
 Efficiently manage tasks, marking them as completed or in progress for a clear overview.
-Task Visibility:
+
+## Task Visibility:
 Family members can access a task list, viewing details and commitments for effective collaboration.
-Task Commitment:
+
+## Task Commitment:
 Family members can commit to specific tasks, promoting shared responsibility and support.
 
-#### Next Up
-Notifications:
+### Next Up
+
+## Notifications:
 Users receive timely notifications about task updates and commitments.
-User Profiles:
+
+## User Profiles:
 Users can create and customize profiles, setting preferences for a personalized experience.
-User Guidance:
+
+## User Guidance:
 Onboarding guidance and tooltips for a user-friendly introduction to the app.
 
-Contact Information Linking:
+## Contact Information Linking:
+
 Link and manage contact information within the app, providing easy access to crucial contacts for enhanced communication and coordination.
 
-## Implementation
+### Implementation
 
-### Tech Stack
+## Tech Stack
 
-React
-Node
-MySQL
-API's
+# React
+# Node
+# MySQL
+# API's
 
-### APIs
+## APIs
 
-Uber API
-google Speech-to-text api 
+# google Speech-to-text api 
+# calendar api 
 
 ### Sitemap
 
--home
--signUp
--login
--tasks
+## -home
+## -signUp
+## -login
+## -tasks
 
 
 ### Mockups
@@ -71,19 +79,20 @@ google Speech-to-text api
 ![home](./src/assets/screenshots/Screenshot%202023-11-18%20at%203.48.04%20PM.png)
 ![newTask](./src/assets/screenshots/Screenshot%202023-11-18%20at%205.36.23%20PM.png)
 ![taskPage](./src/assets/screenshots/Screenshot%202023-11-18%20at%206.04.29%20PM.png)
+
 ### Data
 
 Describe your data and the relationships between them. You can show this visually using diagrams, or write it out. 
 
 ### Endpoints
 
-/home
-/signup
-/login
-/help
-/user/:id
-/tasks
-/user/:id/tasks
+## /home
+## /signup
+## /login
+## /help
+## /user/:id
+## /tasks
+## /user/:id/tasks
 
 
 
@@ -92,16 +101,26 @@ Describe your data and the relationships between them. You can show this visuall
 Include login or user profile functionality? user will be able to login to their profile to be able to pick up task from tasks section and be assign to their profiles. Also will be able to setup appointments or uber rides for the impared person.
 
 
-## Roadmap
+### Roadmap
 
-spring 1: database setup and back end fucntionality, spring 2 validation and user profile setup, spring 3 front-end 
+## Spring 1: database setup and back end fucntionality 
+## Spring 2 validation and user profile setup
+## Spring 3 front-end 
 
-## Nice-to-haves
-Camera Integration:
-Camera feature where I can  see the impared person in case need to do deicision like dressing colors, or signature 
-Pharmacies linking:
-connection with pharmacies to order prespcription also to see if prescription are ready
-Doctor Appointments:
-Schedule and manage doctor appointments on behalf of the visually impaired individual, streamlining healthcare coordination.
-Uber Integration:
-Link addresses to the Uber app, facilitating convenient transportation arrangements for tasks involving travel.
+### Nice-to-haves
+
+## Camera Integration:
+
+# Camera feature where I can  see the impared person in case need to do deicision like dressing colors, or signature .
+
+## Pharmacies linking:
+
+# Connection with pharmacies to order prespcription also to see if prescription are ready.
+
+## Doctor Appointments:
+
+# Schedule and manage doctor appointments on behalf of the visually impaired individual, streamlining healthcare coordination.
+
+## Uber Integration:
+
+# Link addresses to the Uber app, facilitating convenient transportation arrangements for tasks involving travel.
