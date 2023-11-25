@@ -16,27 +16,16 @@ function Login({ onLogin }) {
             <form className="login__form">
                 <div className="login__container login__container-email">
                     <input
-                        className="login__input" placeholder=" " type="text" id="email"
-                        name="email"
-
-                    />
+                        className="login__input" placeholder=" " type="text" id="email" name="email" />
                     {errors.email && <span className="error">{errors.email}</span>}
                     <label className="login__label" htmlFor="email">
                         Email
                     </label>
                 </div>
                 <div className="login__container login__container-password">
-                    <input className="login__input"
-                        placeholder=" "
-                        type={showPassword ? "text" : "password"}
-                        id="password"
-                        name="password"
-                        value={loginDetails.password} onChange={handleChange}
-                    />
+                    <input className="login__input" placeholder=" " type={showPassword ? "text" : "password"} id="password" name="password" value={loginDetails.password} onChange={handleChange} />
                     {errors.password && <span className="error">{errors.password}</span>}
-                    <label className="login__label" htmlFor="password">
-                        Password
-                    </label>
+                    <label className="login__label" htmlFor="password">Password</label>
                     <button className="login__show-password" type="button" onClick={togglePasswordVisibility}> {showPassword ? <EyeNotVisible /> : <EyeVisible />}</button>
                 </div >
                 <button className="login__button" type="submit">Login</button>
