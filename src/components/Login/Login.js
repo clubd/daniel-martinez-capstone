@@ -10,6 +10,10 @@ function Login({ onLogin }) {
     const [errors, setErrors] = useState({});
     const [showPassword, setShowPassword] = useState(false);
 
+    const togglePasswordVisibility = () => {
+        setShowPassword(!showPassword);
+    };
+
     return (
         <div className="login">
             <h1 className="login__heading">Login</h1>
@@ -18,9 +22,7 @@ function Login({ onLogin }) {
                     <input
                         className="login__input" placeholder=" " type="text" id="email" name="email" />
                     {errors.email && <span className="error">{errors.email}</span>}
-                    <label className="login__label" htmlFor="email">
-                        Email
-                    </label>
+                    <label className="login__label" htmlFor="email">Email</label>
                 </div>
                 <div className="login__container login__container-password">
                     <input className="login__input" placeholder=" " type={showPassword ? "text" : "password"} id="password" name="password" value={loginDetails.password} onChange={handleChange} />
