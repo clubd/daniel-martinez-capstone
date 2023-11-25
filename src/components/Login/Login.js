@@ -14,6 +14,24 @@ function Login({ onLogin }) {
         setShowPassword(!showPassword);
     };
 
+    const validateForm = () => {
+        const newErrors = {};
+
+        if (!loginDetails.email) {
+            newErrors.email = "Email is required";
+        } else if (!/\S+@\S+\.\S+/.test(loginDetails.email)) {
+            newErrors.email = "Invalid email format";
+        }
+
+        if (!loginDetails.password) {
+            newErrors.password = "Password is required";
+        }
+
+        setErrors(newErrors);
+
+        return Object.keys(newErrors).length === 0;
+    };
+
     return (
         <div className="login">
             <h1 className="login__heading">Login</h1>
