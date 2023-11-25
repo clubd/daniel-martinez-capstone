@@ -1,0 +1,109 @@
+@use "../../styles/partials/typography" as *;
+@use "../../styles/partials/mixin" as *;
+@use "../../styles/partials/variables" as *;
+
+
+body {
+    background-image: url(../../assets/images/background-login.png);
+    background-color: $white;
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+    font-family: "Poppins";
+}
+
+.signup {
+    &__heading {
+        margin-top: 2rem;
+        margin-right: 1rem;
+        font-family: "Poppins", sans-serif;
+        font-size: 3.0rem;
+        color: $white;
+        display: flex;
+        flex-direction: row-reverse;
+    }
+
+    &__form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 6rem 4rem;
+        border: 2px solid rgba(22, 69, 198, 0.75);
+        border-radius: 8px;
+        backdrop-filter: blur(20px);
+        box-shadow: 0 0 30px rgba(0, 0, 0, .25);
+    }
+
+    &__container {
+        position: relative;
+        margin: 0.75rem 1rem;
+    }
+
+    &__label {
+        position: absolute;
+        left: 2rem;
+        top: 1.2rem;
+        color: black;
+        cursor: text;
+        transition: top 200ms ease-in,
+            left 200ms ease-in,
+            font-size 200ms ease-in;
+        background-color: rgba(253, 253, 254, 1);
+        backdrop-filter: blur(10px);
+    }
+
+    &__input {
+        overflow: hidden;
+        padding: 1rem;
+        width: 100%;
+        padding: 0.625rem;
+        box-sizing: border-box;
+        border: 2px solid $ice;
+        font-family: inherit;
+        border-radius: 24px;
+        outline: none;
+        background: none;
+        font-size: 1.2rem;
+
+        &:hover {
+            border-color: $darkblue;
+        }
+
+        &:focus {
+            border-color: $orange;
+        }
+    }
+
+    &__show-password {
+        position: absolute;
+        right: 0.5rem;
+        top: 0.8rem;
+        background: none;
+        border: none;
+        color: $darkblue;
+        font-size: .05rem;
+        cursor: pointer;
+    }
+
+    &__button {
+        width: 12rem;
+        padding: 0.25rem;
+        box-sizing: border-box;
+        border: 2px solid $ice;
+        font-family: inherit;
+        border-radius: 24px;
+        outline: none;
+        background: $ice;
+        font-size: 1.5rem;
+        color: $white;
+        margin: 1rem;
+    }
+
+}
+
+.signup__input:focus~.signup__label,
+.signup__input:not(:placeholder-shown)~.signup__label {
+    top: -0.5rem;
+    font-size: 0.8rem;
+    left: 1.5rem;
+}

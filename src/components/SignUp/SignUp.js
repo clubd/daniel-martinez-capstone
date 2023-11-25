@@ -1,6 +1,8 @@
 import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { ReactComponent as EyeVisible } from "../../assets/icons/ion_eye-outline.svg";
+import { ReactComponent as EyeNotVisible } from "../../assets/icons/basil_eye-closed-outline.svg";
 import "./SignUp.scss";
 
 function SignUp({ onSignUp }) {
@@ -9,6 +11,8 @@ function SignUp({ onSignUp }) {
         firstName: "", lastName: "", email: "", phone: "", password: ""
     });
     const [errors, setErrors] = useState({});
+    const [showPassword, setShowPassword] = useState(false);
+
 
     const validateForm = () => {
         const newErrors = {};
@@ -29,7 +33,7 @@ function SignUp({ onSignUp }) {
 
         if (!userDetails.phone) {
             newErrors.phone = 'Phone is required';
-        } else if (!/^\+\d{1,3}\d{10}$/.test(userDetails.phone)) {
+        } else if (!/^\+?\d{1,3}(?:\s?\d{3,})+$/.test(userDetails.phone)) {
             newErrors.phone = 'Invalid phone format';
         }
 
@@ -68,29 +72,32 @@ function SignUp({ onSignUp }) {
             <h1 className="signup__heading">Sign Up</h1>
             <form className="signup__form" onSubmit={handleSubmit}>
                 <div className="signup__container signup__container-first">
-                    <label htmlFor="firstName">First Name</label>
-                    <input className="signup__input" placeholder="First Name" type="text" id="firstName" name="firstName" value={userDetails.firstName} onChange={handleChange} />
+                    <input className="signup__input" placeholder=" " type="text" id="firstName" name="firstName" value={userDetails.firstName} onChange={handleChange} />
                     {errors.firstName && <span className="error">{errors.firstName}</span>}
+                    <label className="signup__label" htmlFor="firstName">First Name</label>
                 </div>
                 <div className="signup__container signup__container-last">
-                    <label htmlFor="lastName">Last Name</label>
-                    <input className="signup__input" placeholder="Last Name" type="text" id="lastName" name="lastName" value={userDetails.lastName} onChange={handleChange} />
+                    <input className="signup__input" placeholder=" " type="text" id="lastName" name="lastName" value={userDetails.lastName} onChange={handleChange} />
                     {errors.lastName && <span className="error">{errors.lastName}</span>}
+                    <label className="signup__label" htmlFor="lastName">Last Name</label>
                 </div>
                 <div className="signup__container signup__container-email">
-                    <label htmlFor="email">Email</label>
-                    <input className="signup__input" placeholder="Email" type="text" id="email" name="email" value={userDetails.email} onChange={handleChange} />
+                    <input className="signup__input" placeholder=" " type="text" id="email" name="email" value={userDetails.email} onChange={handleChange} />
                     {errors.email && <span className="error">{errors.email}</span>}
+                    <label className="signup__label" htmlFor="email">Email</label>
                 </div>
                 <div className="signup__container signup__container-phone">
-                    <label htmlFor="phone">Phone</label>
-                    <input className="signup__input" placeholder="Phone" type="text" id="phone" name="phone" value={userDetails.phone} onChange={handleChange} />
+                    <input className="signup__input" placeholder=" " type="text" id="phone" name="phone" value={userDetails.phone} onChange={handleChange} />
                     {errors.phone && <span className="error">{errors.phone}</span>}
+                    <label className="signup__label" htmlFor="phone">Phone</label>
                 </div>
                 <div className="signup__container signup__container-password">
-                    <label htmlFor="password">Password</label>
-                    <input className="signup__input" placeholder="Password" type="password" id="password" name="password" value={userDetails.password} onChange={handleChange} />
+                    <input className="signup__input" placeholder=" " type={showPassword ? "text" : "password"} id="password" name="password" value={userDetails.password} onChange={handleChange} />
                     {errors.password && <span className="error">{errors.password}</span>}
+                    <label className="signup__label" htmlFor="password">Password</label>
+                    <button className="signup__show-password" type="button" onClick={() => setShowPassword(!showPassword)}>
+                    {showPassword ? <EyeNotVisible /> : <EyeVisible />} 
+                </button>
                 </div>
                 <button className="signup__button" type="submit">Sign Up</button>
             </form>
