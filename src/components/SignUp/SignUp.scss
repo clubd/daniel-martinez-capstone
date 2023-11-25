@@ -3,14 +3,6 @@
 @use "../../styles/partials/variables" as *;
 
 
-body {
-    background-image: url(../../assets/images/background-login.png);
-    background-color: $white;
-    background-position: center;
-    background-size: cover;
-    background-attachment: fixed;
-    font-family: "Poppins";
-}
 
 .signup {
     &__heading {
