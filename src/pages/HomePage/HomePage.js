@@ -1,6 +1,9 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import UserInfo from "../../components/UserInfo/UserInfo";
+import TaskList from "../../components/TaskList/TaskList";
+
 
 function HomePage() {
     const navigate = useNavigate();
@@ -32,14 +35,14 @@ function HomePage() {
                 <h2>Tasks Not Assigned Yet</h2>
                 <TaskList tasks={tasks} />
             </div>
-            <div className="homepage__task-actions">
+            {/* <div className="homepage__task-actions">
                 <h2>Your Task Counter</h2>
                 <TaskCounter userId={userData.id} />
             </div>
             <div className="homepage__calendar">
                 <h2>Calendar</h2>
                 <Calendar />
-            </div>
+            </div> */}
         </div>
     );
 }
