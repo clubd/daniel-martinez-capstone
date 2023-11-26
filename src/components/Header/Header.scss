@@ -1,0 +1,85 @@
+@use "../../styles/partials/typography" as *;
+@use "../../styles/partials/mixin" as *;
+@use "../../styles/partials/variables" as *;
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+    background-color: $black; 
+    color: $white; 
+
+    &__backdrop {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 9;
+    }
+
+    &__menu-icon {
+        cursor: pointer;
+
+        img {
+            width: 30px; 
+        }
+    }
+
+    &__logo {
+        cursor: pointer;
+
+        img {
+            width: 80px; 
+        }
+    }
+
+    &__new-task {
+        a {
+            img {
+                width: 30px; 
+            }
+        }
+    }
+
+    &__sidebar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100vh;
+        width: 200px; 
+        background-color: $black; 
+        display: flex;
+        flex-direction: column;
+        padding: 1rem;
+        z-index: 2; 
+
+        button {
+            background: none;
+            border: none;
+            color: $white; 
+            padding: 0.5rem;
+            margin-bottom: 1rem;
+
+            img {
+                width: 24px; //
+                margin-right: 0.5rem;
+            }
+
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+    }
+
+    &__menu-option{
+        font-family: "Poppins", sans-serif;
+    }
+    &.sidebar-open {
+        &__sidebar {
+            transform: translateX(0);
+        }
+    }
+}
