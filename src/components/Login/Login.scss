@@ -120,6 +120,9 @@
             text-decoration: none;
         }
     }
+    &__menu-option {
+        font-family: "Poppins", sans-serif;
+    }
 }
     .login__input:focus~.login__label,
     .login__input:not(:placeholder-shown)~.login__label {
