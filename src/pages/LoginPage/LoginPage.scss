@@ -1,0 +1,12 @@
+@use "../../styles/partials/typography" as *;
+@use "../../styles/partials/mixin" as *;
+@use "../../styles/partials/variables" as *;
+
+body {
+    background-image: url("../../assets/images/iceberg.svg") !important;
+    background-color: $white;
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+    font-family: "Poppins";
+}

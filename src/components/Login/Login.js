@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
-import { EyeVisible, EyeNotVisible } from "../../assets/icons";
+import { ReactComponent as EyeVisible } from "../../assets/icons/ion_eye-outline.svg";
+import { ReactComponent as EyeNotVisible } from "../../assets/icons/basil_eye-closed-outline.svg";
+import logo from "../../assets/logo/logo-white.svg"
 import "./Login.scss"
 
 function Login({ onLogin }) {
@@ -17,13 +19,13 @@ function Login({ onLogin }) {
     const validateForm = () => {
         const newErrors = {};
 
-        if (!loginDetails.email) {
+        if (!loginData.email) {
             newErrors.email = "Email is required";
-        } else if (!/\S+@\S+\.\S+/.test(loginDetails.email)) {
+        } else if (!/\S+@\S+\.\S+/.test(loginData.email)) {
             newErrors.email = "Invalid email format";
         }
 
-        if (!loginDetails.password) {
+        if (!loginData.password) {
             newErrors.password = "Password is required";
         }
 
@@ -32,25 +34,57 @@ function Login({ onLogin }) {
         return Object.keys(newErrors).length === 0;
     };
 
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+
+        if (validateForm()) {
+            try {
+                const response = await axios.post("http://localhost:8087/users/login", loginData);
+                onLogin(response.data);
+
+                if (response.data.approved) {
+                    navigate("/homepage"); 
+                } else {
+                    console.error("User not approved. Please contact support.");
+                }
+            } catch (error) {
+                console.error("Error during login:", error.response.data.message);
+
+                if (error.response.status === 401) {
+                    window.alert("Wrong email or password. Please check and try again.");
+                }
+            }
+        }
+    };
+
+    const handleChange = (e) => {
+        setLoginData({ ...loginData, [e.target.name]: e.target.value });
+        setErrors({ ...errors, [e.target.name]: "" });
+    };
+
     return (
         <div className="login">
+            <div className="login__container-top">
+            <img src={logo} alt="Logo" className="login__logo" />
             <h1 className="login__heading">Login</h1>
+            </div>
             <form className="login__form">
                 <div className="login__container login__container-email">
                     <input
-                        className="login__input" placeholder=" " type="text" id="email" name="email" />
+                        className="login__input" placeholder=" " type="text" id="email" name="email" value={loginData.email}
+                        onChange={handleChange} />
                     {errors.email && <span className="error">{errors.email}</span>}
                     <label className="login__label" htmlFor="email">Email</label>
                 </div>
                 <div className="login__container login__container-password">
-                    <input className="login__input" placeholder=" " type={showPassword ? "text" : "password"} id="password" name="password" value={loginDetails.password} onChange={handleChange} />
+                    <input className="login__input" placeholder=" " type={showPassword ? "text" : "password"} id="password" name="password" value={loginData.password} onChange={handleChange} />
                     {errors.password && <span className="error">{errors.password}</span>}
                     <label className="login__label" htmlFor="password">Password</label>
                     <button className="login__show-password" type="button" onClick={togglePasswordVisibility}> {showPassword ? <EyeNotVisible /> : <EyeVisible />}</button>
                 </div >
                 <button className="login__button" type="submit">Login</button>
             </form>
-            <p> Don't have an account? <Link to="/signup">Create one</Link>.</p>
+            <p className="login__new"> Don't have an account? <Link className="login__link" to="/signup">Create one</Link>.</p>
         </div >
     );
 }

@@ -74,27 +74,27 @@ function SignUp({ onSignUp }) {
                 <div className="signup__container signup__container-first">
                     <input className="signup__input" placeholder=" " type="text" id="firstName" name="firstName" value={userDetails.firstName} onChange={handleChange} />
                     {errors.firstName && <span className="error">{errors.firstName}</span>}
-                    <label className="signup__label" htmlFor="firstName">First Name</label>
+                    <label className="signup__label signup__label--first" htmlFor="firstName">First Name</label>
                 </div>
                 <div className="signup__container signup__container-last">
                     <input className="signup__input" placeholder=" " type="text" id="lastName" name="lastName" value={userDetails.lastName} onChange={handleChange} />
                     {errors.lastName && <span className="error">{errors.lastName}</span>}
-                    <label className="signup__label" htmlFor="lastName">Last Name</label>
+                    <label className="signup__label signup__label--last" htmlFor="lastName">Last Name</label>
                 </div>
                 <div className="signup__container signup__container-email">
                     <input className="signup__input" placeholder=" " type="text" id="email" name="email" value={userDetails.email} onChange={handleChange} />
                     {errors.email && <span className="error">{errors.email}</span>}
-                    <label className="signup__label" htmlFor="email">Email</label>
+                    <label className="signup__label signup__label--email" htmlFor="email">Email</label>
                 </div>
                 <div className="signup__container signup__container-phone">
                     <input className="signup__input" placeholder=" " type="text" id="phone" name="phone" value={userDetails.phone} onChange={handleChange} />
                     {errors.phone && <span className="error">{errors.phone}</span>}
-                    <label className="signup__label" htmlFor="phone">Phone</label>
+                    <label className="signup__label signup__label--phone" htmlFor="phone">Phone</label>
                 </div>
                 <div className="signup__container signup__container-password">
                     <input className="signup__input" placeholder=" " type={showPassword ? "text" : "password"} id="password" name="password" value={userDetails.password} onChange={handleChange} />
                     {errors.password && <span className="error">{errors.password}</span>}
-                    <label className="signup__label" htmlFor="password">Password</label>
+                    <label className="signup__label signup__label--password" htmlFor="password">Password</label>
                     <button className="signup__show-password" type="button" onClick={() => setShowPassword(!showPassword)}>
                     {showPassword ? <EyeNotVisible /> : <EyeVisible />} 
                 </button>

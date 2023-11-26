@@ -8,6 +8,7 @@
     &__heading {
         margin-top: 2rem;
         margin-right: 1rem;
+        padding-right: 2.7rem;
         font-family: "Poppins", sans-serif;
         font-size: 3.0rem;
         color: $white;
@@ -19,16 +20,20 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        margin: 6rem 4rem;
-        border: 2px solid rgba(22, 69, 198, 0.75);
+        margin: 3rem 4rem;
+        border: 2px solid rgba(82, 86, 97, 0.75);
         border-radius: 8px;
-        backdrop-filter: blur(20px);
+        backdrop-filter: blur(100px);
         box-shadow: 0 0 30px rgba(0, 0, 0, .25);
     }
 
     &__container {
         position: relative;
         margin: 0.75rem 1rem;
+    }
+
+    &__container-first {
+        margin-top: 2rem;
     }
 
     &__label {
@@ -40,8 +45,23 @@
         transition: top 200ms ease-in,
             left 200ms ease-in,
             font-size 200ms ease-in;
-        background-color: rgba(253, 253, 254, 1);
+        background-color: rgba(201, 238, 247, 1);
         backdrop-filter: blur(10px);
+        &--first{
+            background-color: rgba(186, 231, 240, 1);
+        }
+        &--last{
+            background-color: rgba(186, 223, 234, 1);
+        }
+        &--email{
+            background-color: rgba(171, 219, 234, 1);
+        }
+        &--phone {
+            background-color: rgba(168, 216, 231, 1);
+        }
+        &--password{
+            background-color: rgba(161, 218, 229, 1);
+        }
     }
 
     &__input {
@@ -50,7 +70,7 @@
         width: 100%;
         padding: 0.625rem;
         box-sizing: border-box;
-        border: 2px solid $ice;
+        border: 2px solid rgb(252, 253, 254);
         font-family: inherit;
         border-radius: 24px;
         outline: none;
@@ -69,7 +89,7 @@
     &__show-password {
         position: absolute;
         right: 0.5rem;
-        top: 0.8rem;
+        top: 0.65rem;
         background: none;
         border: none;
         color: $darkblue;
