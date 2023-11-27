@@ -8,7 +8,27 @@ const NewTask = () => {
 
     const handleChange = (e) => {
         setFormData({
-            ...formData,[e.target.name]: e.target.value,
+            ...formData, [e.target.name]: e.target.value,
         });
     };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+
+        try {
+            const response = await axios.post("http://localhost:8087/tasks", formData);
+
+            console.log(response.data);
+
+            setFormData({
+                title: "",description: "", importance: "low", dueDate: "",
+            });
+        } catch (error) {
+    
+            console.error("Error creating task:", error);
+        }
+    };
+
 }
+
+export default NewTask;
