@@ -5,7 +5,7 @@ import "./TaskList.scss";
 function TaskList({ tasks }) {
     return (
         <>
-        <h2 className="task__heading">Task</h2>
+        <h2 className="task__heading">Tasks</h2>
         <div className="task__list">
             {tasks.map((task) => (
                 <div key={task.id} className="task__list-item">

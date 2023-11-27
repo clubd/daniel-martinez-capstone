@@ -1,3 +1,19 @@
 @use "../../styles/partials/typography" as *;
 @use "../../styles/partials/mixin" as *;
 @use "../../styles/partials/variables" as *;
+
+.calendar {
+    border: 2px solid rgba(82, 86, 97, 0.75);
+    border-radius: 20px;
+    width: 10rem;
+    margin-left: 2rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    text-align: -moz-center;
+    text-align: -webkit-center;
+    height: 11rem;
+
+    &__heading {
+        text-align: -moz-center;
+        text-align: -webkit-center;
+    }
+}

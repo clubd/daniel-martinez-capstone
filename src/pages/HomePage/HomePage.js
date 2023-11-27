@@ -32,22 +32,23 @@ function HomePage() {
 
     return (
         <>
-        <Header />
-        <div className="homepage">
-            <div className="homepage__user-info">
-                <UserInfo userData={userData} />
+            <Header />
+            <div className="homepage">
+                <div className="homepage__user-info">
+                    <UserInfo userData={userData} />
+                </div>
+                <div className="homepage__tasks">
+                    <TaskList tasks={tasks} />
+                </div>
+                <div className="homepage__bottom-container">
+                    <div className="homepage__task-actions">
+                        <TaskCounter userId={userData.id} />
+                    </div>
+                    <div className="homepage__calendar">
+                        <Calendar />
+                    </div>
+                </div>
             </div>
-            <div className="homepage__tasks">
-                <TaskList tasks={tasks} />
-            </div>
-            <div className="homepage__task-actions">
-                <TaskCounter userId={userData.id} />
-            </div>
-            <div className="homepage__calendar">
-                <h2>Calendar</h2>
-                <Calendar />
-            </div>
-        </div>
         </>
     );
 }
