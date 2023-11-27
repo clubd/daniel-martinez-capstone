@@ -1,10 +1,12 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import Header from "../../components/Header/Header";
 import UserInfo from "../../components/UserInfo/UserInfo";
 import TaskList from "../../components/TaskList/TaskList";
 import TaskCounter from "../../components/TaskCounter/TaskCounter";
+import Calendar from "../../components/Calendar/Calendar";
+import Header from "../../components/Header/Header";
+import "./HomePage.scss";
 
 
 function HomePage() {
@@ -29,6 +31,8 @@ function HomePage() {
     }, []);
 
     return (
+        <>
+        <Header />
         <div className="homepage">
             <div className="homepage__user-info">
                 <UserInfo userData={userData} />
@@ -43,9 +47,10 @@ function HomePage() {
             </div>
             <div className="homepage__calendar">
                 <h2>Calendar</h2>
-                {/* <Calendar /> */}
+                <Calendar />
             </div>
         </div>
+        </>
     );
 }
 
