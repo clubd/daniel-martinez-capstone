@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import Header from "../../components/Header/Header";
 import UserInfo from "../../components/UserInfo/UserInfo";
 import TaskList from "../../components/TaskList/TaskList";
 import TaskCounter from "../../components/TaskCounter/TaskCounter";
