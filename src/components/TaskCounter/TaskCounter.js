@@ -21,7 +21,7 @@ function TaskCounter({ userId }) {
     return (
         <div className="task__container">
             <h2 className="task__counter-heading">Your Task Counter</h2>
-            <p className="task__info">{`You have ${taskCount} tasks left.`}</p>
+            <p className="task__counter-info">{`You have ${taskCount} tasks left.`}</p>
         </div>
     );
 }
