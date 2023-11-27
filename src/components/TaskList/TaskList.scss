@@ -1,0 +1,60 @@
+@use "../../styles/partials/typography" as *;
+@use "../../styles/partials/mixin" as *;
+@use "../../styles/partials/variables" as *;
+
+.task {
+    &__list {
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        border: 2px solid rgba(82, 86, 97, 0.75);
+        border-radius: 20px;
+        margin: 2rem;
+        margin-top: 2rem;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+        background-color: $white;
+    }
+
+    &__list-container {
+        display: flex;
+        margin: 1rem;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    &__list-item {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        border-bottom: 2px solid rgba(82, 86, 97, 0.75);
+        padding: 1rem;
+    }
+
+    &__title {
+        margin: 0rem;
+        font-size: 1.2rem;
+        line-height: 1.5rem;
+    }
+
+    &__description {
+        font-size: 1rem;
+        line-height: 1.2rem;
+    }
+    &__link {
+        width: 8rem;
+        padding: 0.25rem;
+        padding-left: 0.7rem;
+        align-self: flex-end;
+        box-sizing: border-box;
+        border: 2px solid $ice;
+        font-family: inherit;
+        border-radius: 24px;
+        outline: none;
+        background: $ice;
+        font-size: 1rem;
+        color: $white;
+        text-decoration: none;
+    }
+}

@@ -4,12 +4,15 @@ import "./TaskList.scss";
 
 function TaskList({ tasks }) {
     return (
-        <div className="task_list">
+        <div className="task__list">
             {tasks.map((task) => (
                 <div key={task.id} className="task__list-item">
-                    <h3>{task.title}</h3>
-                    <p>{task.description}</p>
-                    <Link to={`/task-list/${task.id}`}>Assign Task</Link>
+                    <div className="task__list-container">
+                    <h3 className="task__title">{task.title}</h3>
+
+                    <p className="task__description">{task.description}</p>
+                    <Link className="task__link" to={`/task-list/${task.id}`}>Assign Task</Link>
+                    </div>
                 </div>
             ))}
         </div>
