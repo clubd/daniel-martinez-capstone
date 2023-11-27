@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import UserInfo from "../../components/UserInfo/UserInfo";
 import TaskList from "../../components/TaskList/TaskList";
+import TaskCounter from "../../components/TaskCounter/TaskCounter";
 
 
 function HomePage() {
@@ -35,14 +36,14 @@ function HomePage() {
                 <h2>Tasks Not Assigned Yet</h2>
                 <TaskList tasks={tasks} />
             </div>
-            {/* <div className="homepage__task-actions">
+            <div className="homepage__task-actions">
                 <h2>Your Task Counter</h2>
                 <TaskCounter userId={userData.id} />
             </div>
             <div className="homepage__calendar">
                 <h2>Calendar</h2>
-                <Calendar />
-            </div> */}
+                {/* <Calendar /> */}
+            </div>
         </div>
     );
 }
