@@ -11,7 +11,7 @@ function TaskCounter({ userId }) {
                 const response = await axios.get(`http://localhost:8087/users/${userId}/tasks`);
                 setTaskCount(response.data.length);
             } catch (error) {
-                console.error("Error fetching task count:", error);
+                console.error("Error loading task count:", error);
             }
         };
 
@@ -19,8 +19,9 @@ function TaskCounter({ userId }) {
     }, [userId]);
 
     return (
-        <div className="task-counter">
-            <p>{`You have ${taskCount} tasks left.`}</p>
+        <div className="task__container">
+            <h2 className="task__counter-heading">Your Task Counter</h2>
+            <p className="task__info">{`You have ${taskCount} tasks left.`}</p>
         </div>
     );
 }

@@ -38,11 +38,9 @@ function HomePage() {
                 <UserInfo userData={userData} />
             </div>
             <div className="homepage__tasks">
-                <h2>Tasks Not Assigned Yet</h2>
                 <TaskList tasks={tasks} />
             </div>
             <div className="homepage__task-actions">
-                <h2>Your Task Counter</h2>
                 <TaskCounter userId={userData.id} />
             </div>
             <div className="homepage__calendar">

@@ -3,6 +3,13 @@
 @use "../../styles/partials/variables" as *;
 
 .task {
+    &__heading {
+        font-size: 2.125rem;
+        text-align: -moz-center;
+        text-align: -webkit-center;
+        margin: 0rem;
+    }
+
     &__list {
         overflow: hidden;
         display: flex;
@@ -42,6 +49,7 @@
         font-size: 1rem;
         line-height: 1.2rem;
     }
+
     &__link {
         width: 8rem;
         padding: 0.25rem;
