@@ -20,10 +20,10 @@ function HomePage() {
                 const userResponse = await axios.get("http://localhost:8087/users");
                 setUserData(userResponse.data);
 
-                const tasksResponse = await axios.get("http://localhost:8087/tasks");
+                const tasksResponse = await axios.get(`http://localhost:8087/users/${userResponse.data.id}/tasks`);
                 setTasks(tasksResponse.data);
             } catch (error) {
-                console.error("Error fetching data:", error);
+                console.error("Error obtain data:", error);
             }
         };
 
@@ -38,7 +38,11 @@ function HomePage() {
                     <UserInfo userData={userData} />
                 </div>
                 <div className="homepage__tasks">
-                    <TaskList tasks={tasks} />
+                {userData.id ? (
+                        <TaskList tasks={tasks} />
+                    ) : (
+                        <p>Loading tasks...</p>
+                    )}
                 </div>
                 <div className="homepage__bottom-container">
                     <div className="homepage__task-actions">

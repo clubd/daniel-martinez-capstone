@@ -11,6 +11,7 @@ function Login({ onLogin }) {
     const [loginData, setLoginData] = useState({ email: "", password: "", });
     const [errors, setErrors] = useState({});
     const [showPassword, setShowPassword] = useState(false);
+    const [loading, setLoading] = useState(false);
 
     const togglePasswordVisibility = () => {
         setShowPassword(!showPassword);
@@ -38,21 +39,27 @@ function Login({ onLogin }) {
         e.preventDefault();
 
         if (validateForm()) {
+            setLoading(true);
             try {
                 const response = await axios.post("http://localhost:8087/users/login", loginData);
-                onLogin(response.data);
+                if (response) {
+                    sessionStorage.setItem("token", response.data.token);
+                    onLogin(response.data);
 
-                if (response.data.approved) {
-                    navigate("/homepage"); 
-                } else {
-                    console.error("User not approved. Please contact support.");
+                    if (response.data.token) {
+                        navigate("/homepage");
+                    } else {
+                        console.error("User not approved. Please try again");
+                    }
                 }
             } catch (error) {
-                console.error("Error during login:", error.response.data.message);
+                console.error("Error during login:", error.response?.data?.message);
 
-                if (error.response.status === 401) {
+                if (error.response?.status === 401) {
                     window.alert("Wrong email or password. Please check and try again.");
                 }
+            } finally {
+                setLoading(false);
             }
         }
     };
@@ -68,7 +75,7 @@ function Login({ onLogin }) {
             <img src={logo} alt="Logo" className="login__logo" />
             <h1 className="login__heading">Login</h1>
             </div>
-            <form className="login__form">
+            <form className="login__form" onSubmit={handleSubmit}>
                 <div className="login__container login__container-email">
                     <input
                         className="login__input" placeholder=" " type="text" id="email" name="email" value={loginData.email}
@@ -82,7 +89,7 @@ function Login({ onLogin }) {
                     <label className="login__label" htmlFor="password">Password</label>
                     <button className="login__show-password" type="button" onClick={togglePasswordVisibility}> {showPassword ? <EyeNotVisible /> : <EyeVisible />}</button>
                 </div >
-                <button className="login__button" type="submit">Login</button>
+                <button className="login__button" type="submit" disabled={loading}> {loading ? "Logging in..." : "Login"}</button>
             </form>
             <p className="login__new"> Don't have an account? <Link className="login__link" to="/signup">Create one</Link>.</p>
         </div >
