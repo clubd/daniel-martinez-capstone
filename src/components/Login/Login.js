@@ -47,7 +47,7 @@ function Login({ onLogin }) {
                     onLogin(response.data);
 
                     if (response.data.token) {
-                        navigate("/homepage");
+                        navigate(`/users/${response.data.userId}`);
                     } else {
                         console.error("User not approved. Please try again");
                     }

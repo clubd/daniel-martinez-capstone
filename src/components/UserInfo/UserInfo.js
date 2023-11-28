@@ -2,6 +2,7 @@ import "./UserInfo.scss";
 import avatar from "../../assets/icons/avatar.svg"
 
 function UserInfo({ userData }) {
+
     return (
         <div className="user">
             <img className="user__img" src={avatar}/*{userData.avatar}*/ alt="User Avatar" />

@@ -8,7 +8,13 @@ function TaskCounter({ userId }) {
     useEffect(() => {
         const getTaskCount = async () => {
             try {
-                const response = await axios.get(`http://localhost:8087/users/${userId}/tasks`);
+                const token = sessionStorage.getItem("token"); 
+                const response = await axios.get(`http://localhost:8087/users/${userId}/tasks`, {
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                    },
+                });
+
                 setTaskCount(response.data.length);
             } catch (error) {
                 console.error("Error loading task count:", error);

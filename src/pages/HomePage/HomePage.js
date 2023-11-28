@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import UserInfo from "../../components/UserInfo/UserInfo";
 import TaskList from "../../components/TaskList/TaskList";
@@ -13,20 +13,34 @@ function HomePage() {
     const navigate = useNavigate();
     const [userData, setUserData] = useState({});
     const [tasks, setTasks] = useState([]);
+    const { userId } = useParams();
 
     useEffect(() => {
         const getData = async () => {
             try {
-                const userResponse = await axios.get("http://localhost:8087/users");
+                console.log('Current userId:', userId);
+                const token = sessionStorage.getItem("token"); 
+    
+                const userResponse = await axios.get(`http://localhost:8087/users/${userId}`, {
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                    },
+                });
+    
                 setUserData(userResponse.data);
-
-                const tasksResponse = await axios.get(`http://localhost:8087/users/${userResponse.data.id}/tasks`);
+    
+                const tasksResponse = await axios.get(`http://localhost:8087/users/${userId}/tasks`, {
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                    },
+                });
+    
                 setTasks(tasksResponse.data);
             } catch (error) {
                 console.error("Error obtain data:", error);
             }
         };
-
+    
         getData();
     }, []);
 
@@ -38,11 +52,7 @@ function HomePage() {
                     <UserInfo userData={userData} />
                 </div>
                 <div className="homepage__tasks">
-                {userData.id ? (
                         <TaskList tasks={tasks} />
-                    ) : (
-                        <p>Loading tasks...</p>
-                    )}
                 </div>
                 <div className="homepage__bottom-container">
                     <div className="homepage__task-actions">
