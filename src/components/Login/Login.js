@@ -3,12 +3,12 @@ import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import { ReactComponent as EyeVisible } from "../../assets/icons/ion_eye-outline.svg";
 import { ReactComponent as EyeNotVisible } from "../../assets/icons/basil_eye-closed-outline.svg";
-import logo from "../../assets/logo/logo-white.svg"
-import "./Login.scss"
+import logo from "../../assets/logo/logo-white.svg";
+import "./Login.scss";
 
 function Login({ onLogin }) {
     const navigate = useNavigate();
-    const [loginData, setLoginData] = useState({ email: "", password: "", });
+    const [loginData, setLoginData] = useState({ email: "", password: "" });
     const [errors, setErrors] = useState({});
     const [showPassword, setShowPassword] = useState(false);
     const [loading, setLoading] = useState(false);
@@ -43,6 +43,7 @@ function Login({ onLogin }) {
             try {
                 const response = await axios.post("http://localhost:8087/users/login", loginData);
                 if (response) {
+                    sessionStorage.setItem("userId", response.data.userId); 
                     sessionStorage.setItem("token", response.data.token);
                     onLogin(response.data);
 
@@ -72,8 +73,8 @@ function Login({ onLogin }) {
     return (
         <div className="login">
             <div className="login__container-top">
-            <img src={logo} alt="Logo" className="login__logo" />
-            <h1 className="login__heading">Login</h1>
+                <img src={logo} alt="Logo" className="login__logo" />
+                <h1 className="login__heading">Login</h1>
             </div>
             <form className="login__form" onSubmit={handleSubmit}>
                 <div className="login__container login__container-email">

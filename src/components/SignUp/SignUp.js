@@ -48,17 +48,30 @@ function SignUp({ onSignUp }) {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-
+    
         if (validateForm()) {
             try {
                 const response = await axios.post("http://localhost:8087/users/register", userDetails);
-                onSignUp(response.data);
-                navigate("/login");
+                
+                // Check if 'data' property exists in the response
+                if (response && response.data) {
+                    onSignUp(response.data);
+                    navigate("/login");
+                } else {
+                    console.error('Invalid response format:', response);
+                }
             } catch (error) {
-                console.error('Error during signup:', error.response.data.message);
+                // Log the entire error for debugging
+                console.error('Error during signup:', error);
+                
+                // Log the error message from the response (if available)
+                if (error.response && error.response.data && error.response.data.message) {
+                    console.error('Error message:', error.response.data.message);
+                }
             }
         }
     };
+    
 
     const handleChange = (e) => {
         setUserDetails({ ...userDetails, [e.target.name]: e.target.value });

@@ -4,13 +4,12 @@ import logo from "../../assets/logo/logo-white.svg";
 import menuIcon from "../../assets/icons/menu-dropdown.svg";
 import homeIcon from "../../assets/icons/home-button.svg";
 import newTaskIcon from "../../assets/icons/new-task.svg";
+import taskIcon from "../../assets/icons/task-menu.svg";
 import "./Header.scss";
 
 function Header() {
     const [isSidebarOpen, setSidebarOpen] = useState(false);
     const navigate = useNavigate();
-
-    
 
     const toggleSidebar = () => {
         setSidebarOpen(!isSidebarOpen);
@@ -21,7 +20,12 @@ function Header() {
     };
 
     const handleLogoClick = () => {
-        navigate("/homepage");
+        const userId = sessionStorage.getItem("userId");
+        if (userId) {
+            navigate(`/users/${userId}`);
+        } else {
+            console.error("User ID is not available.");
+        }
         closeSidebar();
     };
 
@@ -30,7 +34,6 @@ function Header() {
             closeSidebar();
         }
     };
-    
 
     return (
         <div className={`header ${isSidebarOpen ? "sidebar-open" : ""}`}>
@@ -47,15 +50,15 @@ function Header() {
             </div>
             {isSidebarOpen && (
                 <div className="header__sidebar">
-                    <button onClick={() => navigate("/homepage")}>
+                    <button onClick={() => navigate(`/users/${sessionStorage.getItem("userId")}`)}>
                         <img src={homeIcon} alt="Home" />
                         <p className="header__menu-option">Home</p>
                     </button>
                     <button onClick={() => navigate("/tasks")}>
-                        <img src={newTaskIcon} alt="Tasks" />
+                        <img src={taskIcon} alt="Tasks" />
                         <p className="header__menu-option">Tasks</p>
                     </button>
-                    <button onClick={() => navigate("/create-task")}>
+                    <button onClick={() => navigate("/new-task")}>
                         <img src={newTaskIcon} alt="Create New Task" />
                         <p className="header__menu-option">Create Task</p>
                     </button>

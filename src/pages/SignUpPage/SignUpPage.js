@@ -3,10 +3,14 @@ import SignUp from "../../components/SignUp/SignUp";
 import "./SignUpPage.scss";
 
 function SignUpPage() {
+    const handleSignUp = (data) => {
+        
+        console.log("Signed up:", data);
+    };
 
     return (
         <div>
-            <SignUp />
+            <SignUp onSignUp={handleSignUp} />
         </div>
     );
 }
