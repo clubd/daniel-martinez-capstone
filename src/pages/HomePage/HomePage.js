@@ -37,12 +37,12 @@ function HomePage() {
     
                 setTasks(tasksResponse.data);
             } catch (error) {
-                console.error("Error obtain data:", error);
+                console.error("Error obtaining data:", error);
             }
         };
     
         getData();
-    }, []);
+    }, [userId]);
 
     return (
         <>

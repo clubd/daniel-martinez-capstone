@@ -4,11 +4,13 @@ import NewTask from "../../components/NewTask/NewTask";
 import "./NewTaskPage.scss"
 
 const NewTaskPage = () => {
+        const userId = sessionStorage.getItem("userId");
+
     return (
         <>
         <Header />
         <div className="new-task__box">
-            <NewTask />
+            <NewTask userId={userId} />
         </div>
         </>
     );

@@ -31,6 +31,8 @@ body {
     }
 
     &__label {
+        font-size: 1.4rem;
+        font-weight: 700;
         color: black;
         backdrop-filter: blur(10px);
     }
@@ -45,6 +47,14 @@ body {
         margin: 1rem;
     }
 
+    &__label-title {
+        margin-left: 3rem;
+    }
+
+    &__label-importance{
+        margin-right: 0.5rem;
+    }
+
     &__input {
         overflow: hidden;
         margin: 0.75rem;
@@ -53,10 +63,11 @@ body {
         box-sizing: border-box;
         border: 2px solid $ice;
         font-family: inherit;
-        border-radius: 24px;
+        border-radius: 10px;
         outline: none;
         background: none;
         font-size: 1.2rem;
+        margin-right: 0.4rem;
 
         &:hover {
             border-color: $darkblue;
@@ -75,7 +86,7 @@ body {
     &__textarea {
         overflow: hidden;
         margin: 0.75rem;
-        width: 16rem;
+        width: 17rem;
         padding: 0.625rem;
         box-sizing: border-box;
         border: 2px solid $ice;
@@ -86,22 +97,23 @@ body {
         font-size: 1.2rem;
         height: 8rem;
         resize: none;
+        margin-left: 7.4rem;
     }
 
     &__select {
         border: 2px solid $ice;
-        border-radius: 20px;
+        border-radius: 10px;
         height: 3rem;
-        width: 16rem;
+        width: 17rem;
         font-size: 1.5rem;
         padding-left: 6rem;
         background: none;
         margin-left: 0rem;
+        margin-right: -2rem;
     }
 
     &__label-date {
         width: 10rem;
-        margin-left: 1rem;
     }
 
     &__button {
@@ -117,4 +129,9 @@ body {
         color: $white;
         margin: 1rem;
     }
+}
+
+::placeholder {
+    color: $black;
+    opacity: 1;
 }
