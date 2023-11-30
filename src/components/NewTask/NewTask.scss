@@ -51,7 +51,7 @@ body {
         margin-left: 3rem;
     }
 
-    &__label-importance{
+    &__label-importance {
         margin-right: 0.5rem;
     }
 
@@ -114,6 +114,14 @@ body {
 
     &__label-date {
         width: 10rem;
+    }
+
+    &__audio-container {
+        position: absolute;
+        cursor: pointer;
+        width: 3rem;
+        left: 5rem;
+        top: 15rem;
     }
 
     &__button {

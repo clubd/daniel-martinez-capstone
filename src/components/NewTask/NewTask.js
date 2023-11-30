@@ -1,6 +1,9 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import recordOnImage from "../../assets/icons/on.svg";
+import recordOffImage from "../../assets/icons/off.svg";
+
 import "./NewTask.scss";
 
 const NewTask = ({ userId }) => {
@@ -11,26 +14,103 @@ const NewTask = ({ userId }) => {
         dueDate: "",
     });
     const [error, setError] = useState("");
+    const [transcriptionResult, setTranscriptionResult] = useState("");
+    const [isRecording, setIsRecording] = useState(false);
+    const [selectedLanguage, setSelectedLanguage] = useState("en-US");
     const navigate = useNavigate();
+
+    let recognition;
+
+    useEffect(() => {
+
+        return () => {
+            if (recognition) {
+                recognition.stop();
+            }
+        };
+    }, []);
+
+    const startRecording = () => {
+        const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+
+        if (!SpeechRecognition) {
+            console.error('Speech recognition not supported');
+            return;
+        }
+
+        if (!recognition) {
+            recognition = new SpeechRecognition();
+            recognition.continuous = true;
+            recognition.lang = selectedLanguage;
+
+            recognition.onstart = () => {
+                console.log('Recording started...');
+                setIsRecording(true);
+            };
+
+            recognition.onresult = (event) => {
+                const result = event.results[event.results.length - 1][0].transcript;
+                console.log('Transcription result:', result);
+                setTranscriptionResult(result);
+            };
+
+            recognition.onerror = (event) => {
+                console.error('Error during recording:', event.error);
+                setIsRecording(false);
+            };
+
+            recognition.onend = () => {
+                console.log('Recording ended...');
+                setIsRecording(false);
+            };
+        }
+
+
+        if (recognition && recognition.recording) {
+            recognition.stop();
+        } else {
+            recognition.start();
+        }
+    };
+
+    const sendToWhisperAPI = async (audioText) => {
+        try {
+            const response = await axios.post(
+                'https://api.openai.com/v1/audio/transcriptions',
+                { text: audioText },
+                {
+                    headers: {
+                        Authorization: `Bearer YOUR_OPENAI_API_KEY`,
+                        'Content-Type': 'application/json',
+                    },
+                }
+            );
+
+            console.log('Whisper API response:', response.data);
+        } catch (error) {
+            console.error('Error sending transcription to Whisper API:', error);
+        }
+    };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        if (!formData.title || !formData.description) {
+        if (!transcriptionResult && !formData.description && (!formData.title || !formData.description)) {
             setError("Title and description cannot be empty.");
             return;
         }
 
+
         try {
             const authToken = sessionStorage.getItem("token");
 
-            console.log("Current userId:", userId);
+            await sendToWhisperAPI(transcriptionResult);
 
             const response = await axios.post(
                 `http://localhost:8087/users/${userId}/tasks`,
                 {
                     title: formData.title,
-                    description: formData.description,
+                    description: transcriptionResult || formData.description || "",
                     status: formData.importance || "pending",
                     priorityLevel: formData.importance,
                     deadline: formData.dueDate,
@@ -61,7 +141,6 @@ const NewTask = ({ userId }) => {
                 console.error("Response data:", error.response.data);
             }
 
-            // Handle the error or update the state accordingly
             setError("Error creating task. Please try again.");
         }
     };
@@ -86,8 +165,11 @@ const NewTask = ({ userId }) => {
                     </div>
                     <div className="new-task__textarea-container">
                         <label className="new-task__label"></label>
-                        <textarea className="new-task__textarea" placeholder="Description" name="description" value={formData.description} onChange={handleChange} required></textarea>
+                        <textarea className="new-task__textarea" placeholder="Description" name="description" value={transcriptionResult || formData.description} onChange={handleChange} required></textarea>
+
+                        <img className="new-task__audio-container" src={isRecording ? recordOffImage : recordOnImage} alt={isRecording ? 'Stop Recording' : 'Start Recording'} onClick={startRecording} style={{ cursor: 'pointer' }} />
                     </div>
+
                     <div className="new-task__label-container">
                         <label className="new-task__label new-task__label-importance">Order:</label>
                         <select className="new-task__select" name="importance" value={formData.importance} onChange={handleChange}>
