@@ -17,6 +17,7 @@ const NewTask = ({ userId }) => {
     const [transcriptionResult, setTranscriptionResult] = useState("");
     const [isRecording, setIsRecording] = useState(false);
     const [selectedLanguage, setSelectedLanguage] = useState("en-US");
+    const [isRecordingActive, setIsRecordingActive] = useState(false);
     const navigate = useNavigate();
 
     let recognition;
@@ -32,46 +33,52 @@ const NewTask = ({ userId }) => {
 
     const startRecording = () => {
         const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-
+    
         if (!SpeechRecognition) {
             console.error('Speech recognition not supported');
             return;
         }
-
+    
         if (!recognition) {
             recognition = new SpeechRecognition();
             recognition.continuous = true;
             recognition.lang = selectedLanguage;
-
+    
             recognition.onstart = () => {
                 console.log('Recording started...');
                 setIsRecording(true);
             };
-
+    
             recognition.onresult = (event) => {
                 const result = event.results[event.results.length - 1][0].transcript;
                 console.log('Transcription result:', result);
                 setTranscriptionResult(result);
             };
-
+    
             recognition.onerror = (event) => {
                 console.error('Error during recording:', event.error);
                 setIsRecording(false);
             };
-
+    
             recognition.onend = () => {
                 console.log('Recording ended...');
                 setIsRecording(false);
             };
         }
-
-
-        if (recognition && recognition.recording) {
-            recognition.stop();
+    
+        if (isRecordingActive) {
+            console.log('Stopping recording...');
+            if (transcriptionResult) {
+                setIsRecordingActive(false);
+                recognition.stop();
+            }
         } else {
+            console.log('Starting recording...');
             recognition.start();
+            setIsRecordingActive(true);
         }
     };
+    
 
     const sendToWhisperAPI = async (audioText) => {
         try {
@@ -167,7 +174,7 @@ const NewTask = ({ userId }) => {
                         <label className="new-task__label"></label>
                         <textarea className="new-task__textarea" placeholder="Description" name="description" value={transcriptionResult || formData.description} onChange={handleChange} required></textarea>
 
-                        <img className="new-task__audio-container" src={isRecording ? recordOffImage : recordOnImage} alt={isRecording ? 'Stop Recording' : 'Start Recording'} onClick={startRecording} style={{ cursor: 'pointer' }} />
+                        <img className="new-task__audio-container" src={isRecordingActive ? recordOffImage : recordOnImage} alt={isRecordingActive ? 'Stop Recording' : 'Start Recording'} onClick={startRecording} style={{ cursor: 'pointer' }} />
                     </div>
 
                     <div className="new-task__label-container">
